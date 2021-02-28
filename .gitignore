@@ -130,3 +130,6 @@ dmypy.json
 
 # pyCharm
 .idea
+
+# environment
+battlefield/gsm_provider/deployment/variables.env
