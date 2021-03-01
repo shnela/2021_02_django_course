@@ -14,6 +14,7 @@ class Customer(models.Model):
         default=INDIVIDUAL,
     )
     username = models.CharField(max_length=128, unique=True)
+    msisdn = models.CharField(max_length=16, unique=True, null=True)
 
     def __str__(self):
         return f'[{self.id}] {self.username} - {self.type}'
