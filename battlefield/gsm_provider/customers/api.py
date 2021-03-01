@@ -1,6 +1,5 @@
 from rest_framework.decorators import api_view
 from rest_framework.generics import get_object_or_404
-from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 
 from customers.models import Customer

@@ -3,20 +3,13 @@ from billings.models import Call, ShortMessageService
 
 
 class CallAdmin(admin.ModelAdmin):
-    list_display = ('call_date', 'duration', 'customer_display')
-    list_select_related = ('customer',)
-
-    def customer_display(self, obj):
-        return f'({obj.customer.id}) {obj.customer.username}'
+    list_display = ('call_date', 'duration', 'caller', 'callee')
+    list_select_related = ('caller', 'callee')
 
 
 class ShortMessageServiceAdmin(admin.ModelAdmin):
-    list_display = ('content', 'send_date', 'customer_display')
-    list_select_related = ('customer',)
-
-    def customer_display(self, obj):
-        return f'({obj.customer.id}) {obj.customer.username}'
-
+    list_display = ('content', 'send_date', 'sending_party_id', 'sent_party_id')
+    list_select_related = ('sending_party_id', 'sent_party_id')
 
 admin.site.register(Call, CallAdmin)
 admin.site.register(ShortMessageService, ShortMessageServiceAdmin)

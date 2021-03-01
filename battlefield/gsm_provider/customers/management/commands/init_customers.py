@@ -1,3 +1,5 @@
+from random import choice
+
 from django.core.management.base import BaseCommand
 from faker import Faker
 
@@ -16,6 +18,7 @@ class Command(BaseCommand):
         customers_to_add = list()
         for _ in range(options['customers_no']):
             customers_to_add.append(
-                Customer(username=fake.unique.first_name())
+                Customer(username=fake.unique.first_name(),
+                         type=choice(Customer.TYPE_CHOICES)[0])
             )
         Customer.objects.bulk_create(customers_to_add)
