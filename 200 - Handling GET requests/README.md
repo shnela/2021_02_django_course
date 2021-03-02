@@ -18,7 +18,7 @@ E.g.
 # such url rule
 path('articles/<int:year>/', views.year_archive),
 # will make a call with following arguments
-year_archive(request, year)
+views.year_archive(request, year)
 ```
 
 ## Exercises
@@ -49,7 +49,7 @@ year_archive(request, year)
 * Use exceptions from `django.http` module to raise proper response code.
     
 ### Bonus
-Accept four-digit numbers only.
+Accept four-digit numbers only by [Registering custom path converters].
 
 ### Do we have time for more?
 1. Define functions
@@ -68,4 +68,4 @@ Accept four-digit numbers only.
 <!-- links -->
 [QueryDict objects]: https://docs.djangoproject.com/en/3.1/ref/request-response/#querydict-objects
 [URL dispatcher]: https://docs.djangoproject.com/en/3.1/topics/http/urls/#example
-
+[Registering custom path converters]: https://docs.djangoproject.com/en/3.1/topics/http/urls/#example

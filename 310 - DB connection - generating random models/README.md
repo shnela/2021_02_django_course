@@ -19,9 +19,7 @@ class CustomerAdmin(admin.ModelAdmin):
 admin.site.register(Customer, CustomerAdmin)
 ```
 
-And mark `battlefield/gsm_provider` as sources root.
-
-Now go to: http://127.0.0.1:8000/admin/
+Visit: http://127.0.0.1:8000/admin/
 
 ### Authorization required...
 [The Django admin site]
@@ -33,7 +31,7 @@ python manage.py createsuperuser --username=admin
 
 **Now log in**.
 
-### Let's play with layout:
+### Let's play with a layout:
 Add
 ```python
 list_display = ('type', 'username')

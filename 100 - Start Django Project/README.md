@@ -42,7 +42,7 @@ And visit http://127.0.0.1:8000/
 > However, some actions like adding files don’t trigger a restart,
 > so you’ll have to restart the server in these cases.
 
-## Configure pyCharm interpreter
+## Configure pyCharm
 
 To set custom environment used by pyCharm go to:
 ```
@@ -50,6 +50,12 @@ File | Settings | Project: 2021_02_django_course | Python Interpreter
 ```
 `Right Click on gear` &rarr; `Add...` &rarr; `Existing environment` &rarr; `Path to python executable`
 
+### Mark Django root directory as source
+[pyCharm - Configuring Project Structure]
+
+`Right Click on 'battlefield/gsm_provider'` &rarr; `Mark directory as...` &rarr; `Sources root`
+
+Now pyCharm will be able to successfully resolve absolute imports.
 
 ## Create new App
 ```bash
@@ -76,7 +82,10 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("<h1>Hi there.</h1>")
+    return HttpResponse("""
+                        <h1>Hi there.</h1>
+                        <a href='https://www.youtube.com/watch?v=4ctK1aoWuqY'>Schwifty response</a>
+                        """)
 
 ```
 
@@ -104,8 +113,8 @@ Add following line to `urlpatterns`.
     path('customers/', include('customers.urls')),
 ```
 
-### Ready
-Look what we've got: http://127.0.0.1:8000/
+### Ready! [Show Me What You Got]
+Visit: http://127.0.0.1:8000/
 
 ## Run project on pyCharm
 [Create and edit run/debug configurations]
@@ -113,14 +122,16 @@ Look what we've got: http://127.0.0.1:8000/
 Click on `Add Configuration` on top right corner &rarr; + &rarr; `Python`
 
 ### Update run configuration
-* `Script path:` `.../battlefield/gsm_provider/manage.py`
+* `Script path:` `../battlefield/gsm_provider/manage.py`
 * `Parameters:` `runserver`
-
+* `Working directory`: `../battlefield/gsm_provider`
 
 <!-- urls -->
 [Django vs Rails]: https://stackshare.io/stackups/django-vs-rails
 [Django - Creating a project]: https://docs.djangoproject.com/en/3.1/intro/tutorial01/#creating-a-project
 [Django - The development server]: https://docs.djangoproject.com/en/3.1/intro/tutorial01/#the-development-server
+[pyCharm - Configuring Project Structure]: https://www.jetbrains.com/help/pycharm/configuring-project-structure.html
 [Django - Writing views]: https://docs.djangoproject.com/en/3.1/topics/http/views/
 [Django - URL dispatcher]: https://docs.djangoproject.com/en/3.1/topics/http/urls/
+[Show Me What You Got]: https://www.youtube.com/watch?v=m1fZ7Ap6ebs
 [Create and edit run/debug configurations]: https://www.jetbrains.com/help/pycharm/creating-and-editing-run-debug-configurations.html

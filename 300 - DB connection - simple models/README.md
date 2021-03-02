@@ -1,5 +1,34 @@
 # DB connection - simple models
 
+## Connect to postgreSQL database
+[Django - databases]
+
+Update [gsm_provider/settings.py](../battlefield/gsm_provider/gsm_provider/settings.py)
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': '5432',
+    }
+}
+```
+
+### Make sure that you'll set env variables when running Django
+#### In shell
+Create [deployment/variables.env](../battlefield/gsm_provider/deployment/variables.env)
+basing on [deployment/variables_template.env](../battlefield/gsm_provider/deployment/variables_template.env).
+```shell
+source ./deployment/variables.env
+```
+
+#### In pyCharm
+Update `Environment variables` in run configuration accordingly.
+
 ## Create simple `Customer` model
 [Django - Models]
 
@@ -11,7 +40,6 @@ class Customer(models.Model):
 
 ### Let's now create instance of `Customer` in database
 
-
 In [Django - shell] run proper [Django - Making queries]:
 ```bash
 python manage.py shell -i ipython
@@ -20,11 +48,11 @@ python manage.py shell -i ipython
 In shell:
 ```python
 from customers.models import Customer
-Customer(name='some name').save()
+Customer(name='eoneon').save()
 ```
 
 #### Error 1: register application in settings
-Remeber about updating `` in [sm_provider/settings.py](../battlefield/gsm_provider/gsm_provider/settings.py)
+Remeber about updating `INSTALLED_APPS` in [sm_provider/settings.py](../battlefield/gsm_provider/gsm_provider/settings.py)
 ```python
 INSTALLED_APPS = [
     #...
@@ -41,27 +69,20 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-### Connect to MySQL database
-Update [gsm_provider/settings.py](../battlefield/gsm_provider/gsm_provider/settings.py)
-
-```python
-DATABASES = {
-    'default': {
-        # 'ENGINE': 'django.db.backends.mysql',
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': '5432',
-    }
-}
-```
+#### Finally works
+You should be able to create user using commands from beginning of
+[Let's now create instance of `Customer` in database](#lets-now-create-instance-of-customer-in-database)
+section.
 
 #### Make sure that you use env variables in env
 ```shell
 source ./deployment/variables.env
 python manage.py shell -i ipython
+```
+
+### Django shell alternative - [shell_plus]
+```bash
+python manage.py shell_plus -i ipython
 ```
 
 ## Exercises
@@ -72,32 +93,28 @@ python manage.py shell -i ipython
 2. Add `type` field:
    * Use `choices` attribute of `CharField`
    * Implement following options of `TYPE_CHOICES`:
-     * `Individual`
-     * `Business`
+     * `Individual` (`IND`)
+     * `Business` (`BUS`)
     
 ### Create new app `billings`
 And prepare two models for it:
 * `ShortMessageService`
-    * `content`
     * `send_date`
+    * `content`
 * `Call`
     * `call_date`
     * `duration`
-    
 
 Remember about:
-* Registering app in settings
+* Registering new app in settings
 * Creating migrations
-
-### Bonus
-[Django - Relationship fields]
-Link newly created models to users.
     
 <!-- links -->
 [Django - Models]: https://docs.djangoproject.com/en/3.1/topics/db/models/
 [Django - Making queries]: https://docs.djangoproject.com/en/3.1/topics/db/queries/
 [Django - Model field reference]: https://docs.djangoproject.com/en/3.1/ref/models/fields/
 [Django - shell]: https://docs.djangoproject.com/en/3.1/ref/django-admin/#shell
+[Django - databases]: https://docs.djangoproject.com/en/3.1/ref/databases/
 [Django - Migrations]: https://docs.djangoproject.com/en/3.1/topics/migrations/
 [Django - Relationship fields]: https://docs.djangoproject.com/en/3.1/ref/models/fields/#module-django.db.models.fields.related
-
+[shell_plus]: https://django-extensions.readthedocs.io/en/latest/shell_plus.html

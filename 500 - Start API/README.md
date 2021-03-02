@@ -14,13 +14,15 @@ Update:
  [gsm_provider/settings.py](../battlefield/gsm_provider/gsm_provider/settings.py)
 ```python
 INSTALLED_APPS = [
+    # ...
     'rest_framework',
+    # ...
 ]
 ```
 
 Visit:
 * http://127.0.0.1:8000/api/customers/
-* http://127.0.0.1:8000/api/customers/<some id>/
+* http://127.0.0.1:8000/api/customers/1/
 
 ## Serialize our model
 [DRF - simple serialization]
@@ -37,9 +39,6 @@ class CustomerSerializer(serializers.Serializer):
         return Customer.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        """
-        Update and return an existing `Snippet` instance, given the validated data.
-        """
         instance.username = validated_data.get('username', instance.username)
         instance.type = validated_data.get('type', instance.type)
         instance.save()
@@ -85,14 +84,6 @@ Test 'POST':
 For both: `customer_list`.
 
 **What’s the Difference between PUT vs PATCH?**
-
-### Exercises
-#### Implement `PUT` and `DELETE` methods for `customer_details`
-#### Replace `CustomerSerializer` with[DRF - ModelSerializer]
-Tips:
-* Remember to inherit from `serializers.ModelSerializer` instead of `serializers.Serializer`
-#### Implement Serializers for remaining models
-
 
 <!-- links -->
 [DRF - installation]: https://www.django-rest-framework.org/?q=collectstatic#installation
