@@ -114,7 +114,7 @@ Add following line to `urlpatterns`.
 ```
 
 ### Ready! [Show Me What You Got]
-Visit: http://127.0.0.1:8000/
+Visit: http://127.0.0.1:8000/customers/
 
 ## Run project on pyCharm
 [Create and edit run/debug configurations]

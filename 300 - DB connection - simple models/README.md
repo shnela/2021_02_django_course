@@ -18,12 +18,22 @@ DATABASES = {
 }
 ```
 
+_db connection will require special adapter e.g. `psycopg2`_
+
 ### Make sure that you'll set env variables when running Django
 #### In shell
 Create [deployment/variables.env](../battlefield/gsm_provider/deployment/variables.env)
 basing on [deployment/variables_template.env](../battlefield/gsm_provider/deployment/variables_template.env).
+
 ```shell
-source ./deployment/variables.env
+source ./deployment/variables.env  # won't work because 'export' is required
+```
+
+[How to export variables from a file?]
+```shell
+set -a                    
+. ./deployment/variables.env 
+set +a
 ```
 
 #### In pyCharm
@@ -113,6 +123,7 @@ Remember about:
 [Django - Models]: https://docs.djangoproject.com/en/3.1/topics/db/models/
 [Django - Making queries]: https://docs.djangoproject.com/en/3.1/topics/db/queries/
 [Django - Model field reference]: https://docs.djangoproject.com/en/3.1/ref/models/fields/
+[How to export variables from a file?]: https://unix.stackexchange.com/a/79077/28154
 [Django - shell]: https://docs.djangoproject.com/en/3.1/ref/django-admin/#shell
 [Django - databases]: https://docs.djangoproject.com/en/3.1/ref/databases/
 [Django - Migrations]: https://docs.djangoproject.com/en/3.1/topics/migrations/
