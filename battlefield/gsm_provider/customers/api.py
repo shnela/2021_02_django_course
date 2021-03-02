@@ -5,7 +5,8 @@ from customers.serializers import CustomerSerializer
 
 
 class CustomerList(generics.ListCreateAPIView):
-    queryset = Customer.objects.all()
+    queryset = Customer.objects.prefetch_related(
+        'calls_made').all()
     serializer_class = CustomerSerializer
 
 
