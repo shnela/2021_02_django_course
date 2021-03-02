@@ -52,13 +52,13 @@ class Customer(models.Model):
 
 In [Django - shell] run proper [Django - Making queries]:
 ```bash
-python manage.py shell -i ipython
+python manage.py shell --ipython
 ```
 
 In shell:
 ```python
 from customers.models import Customer
-Customer(name='eoneon').save()
+Customer(username='eoneon').save()
 ```
 
 #### Error 1: register application in settings
