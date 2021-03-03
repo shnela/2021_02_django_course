@@ -3,13 +3,15 @@
 * [pytest]
 * [Django - Writing and running tests]
 * [The test database]
+* [freezegun]
 
 ## Test [Making queries]
-[customers/tests.py](../battlefield/gsm_provider/customers/tests.py)
+[customers/tests.py](../battlefield/gsm_provider/customers/tests/tests.py)
 
 ## Const data with [TransactionTestCase.fixtures]
 
 ## Generate objects with [Model Bakery]
+[billings/tests.py](../battlefield/gsm_provider/billings/tests.py)
 
 
 <!-- links -->
