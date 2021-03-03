@@ -21,8 +21,8 @@ INSTALLED_APPS = [
 ```
 
 Visit:
-* http://127.0.0.1:8000/api/customers/
-* http://127.0.0.1:8000/api/customers/1/
+* <http://127.0.0.1:8000/api/customers/>
+* <http://127.0.0.1:8000/api/customers/1/>
 
 ## Serialize our model
 [DRF - simple serialization]
