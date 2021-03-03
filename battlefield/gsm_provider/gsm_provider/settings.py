@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 3rd party apps
     'django_extensions',
+    'rest_framework',
     # custom apps
     'billings',
     'customers',
