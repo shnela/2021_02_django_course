@@ -32,7 +32,7 @@ https://www.django-rest-framework.org/tutorial/3-class-based-views/#using-mixins
 https://www.django-rest-framework.org/tutorial/3-class-based-views/#using-generic-class-based-views
 
 Hint:
-* Change `user_id` parameter to `pk` in urls.
+* Change `user_id` parameter to `pk` in urls. [ForeignKey arguments]
 
 <!-- links -->
 [Class-based Views]: https://www.django-rest-framework.org/tutorial/3-class-based-views/#tutorial-3-class-based-views
