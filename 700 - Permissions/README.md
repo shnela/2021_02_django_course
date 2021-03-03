@@ -24,10 +24,14 @@ in [gsm_provider/urls.py](../battlefield/gsm_provider/gsm_provider/urls.py)
 curl -X POST  -u admin:admin  -H "Content-Type: application/json" -d '{"username":"abc"}' http://127.0.0.1:8000/api/customers/
 ```
 
-##### Fix tests
-Use `force_authenticate` and `django.contrib.auth.models.User`.
+## Exercise
+Fix tests [customers/tests/tests_api.py](../battlefield/gsm_provider/customers/tests/tests_api.py)
 
-### User model
+Use `force_authenticate` and `django.contrib.auth.models.User`.  
+[Forcing authentication]  
+To create new user use `User.objects.create_user` and `create_superuser` instead of `User.objects.create`.
+
+## User model
 https://learndjango.com/tutorials/django-custom-user-model
 
 <!-- links -->
