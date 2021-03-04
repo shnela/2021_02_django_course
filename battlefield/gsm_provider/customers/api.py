@@ -1,10 +1,11 @@
-from rest_framework import generics
+from rest_framework import generics, permissions
 
 from customers.models import Customer
 from customers.serializers import ListCustomerSerializer, DetailCustomerSerializer
 
 
 class CustomerList(generics.ListCreateAPIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Customer.objects.all()
 
     def get_serializer_class(self):
@@ -15,5 +16,6 @@ class CustomerList(generics.ListCreateAPIView):
 
 
 class CustomerDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Customer.objects.all()
     serializer_class = DetailCustomerSerializer
