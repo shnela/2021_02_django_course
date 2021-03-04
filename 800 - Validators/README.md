@@ -11,7 +11,7 @@ class PhoneField(serializers.Field):
         return f'+48 {value}'
 
     def to_internal_value(self, data):
-        match_pattern = re.match(r'^\d{3}(-\d{3}){2}$', data)
+        match_pattern = re.match(r'^+48 \d{3}(-\d{3}){2}$', data)
         if not match_pattern:
             raise ValidationError('Expecting data of format: "XXX-XXX-XXX"')
         return data

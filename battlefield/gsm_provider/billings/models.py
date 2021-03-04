@@ -4,12 +4,12 @@ from django.db import models
 class ShortMessageService(models.Model):
     content = models.TextField()
     send_date = models.DateTimeField()
-    sending_party_id = models.ForeignKey(
+    sending_party = models.ForeignKey(
         'customers.Customer',
         related_name='smses_sent',
         on_delete=models.CASCADE,
     )
-    sent_party_id = models.ForeignKey(
+    sent_party = models.ForeignKey(
         'customers.Customer',
         related_name='smses_received',
         on_delete=models.CASCADE,

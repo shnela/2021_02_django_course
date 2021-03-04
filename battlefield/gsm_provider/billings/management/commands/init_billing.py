@@ -26,8 +26,8 @@ class Command(BaseCommand):
                 ShortMessageService(send_date=fake.date_time_between(start_date='-2y',
                                                                      tzinfo=timezone.utc),
                                     content=fake.text(),
-                                    sending_party_id=from_c,
-                                    sent_party_id=to_c)
+                                    sending_party=from_c,
+                                    sent_party=to_c)
             )
             call_to_add.append(
                 Call(call_date=fake.date_time_between(start_date='-2y',

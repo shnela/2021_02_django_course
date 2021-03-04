@@ -1,8 +1,13 @@
 from django.urls import path
 
 from . import api
+from .models import Customer
 
 urlpatterns = [
-    path('customers/', api.CustomerList.as_view()),
-    path('customers/<int:pk>/', api.CustomerDetail.as_view()),
+    path('business/', api.CustomerList.as_view(
+        queryset=Customer.business.all()
+    )),
+    path('business/<int:pk>/', api.CustomerDetail.as_view(
+        queryset=Customer.business.all()
+    )),
 ]
