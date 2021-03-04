@@ -5,10 +5,12 @@ from customers.serializers import CustomerSerializer
 
 
 class CustomerList(generics.ListCreateAPIView):
-    queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.prefetch_related('calls_made').all()
 
 
 class CustomerDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
