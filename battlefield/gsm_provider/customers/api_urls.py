@@ -10,4 +10,10 @@ urlpatterns = [
     path('business/<int:pk>/', api.CustomerDetail.as_view(
         queryset=Customer.business.all()
     )),
+    path('individuals/', api.CustomerList.as_view(
+        queryset=Customer.individuals.all()
+    )),
+    path('individuals/<int:pk>/', api.CustomerDetail.as_view(
+        queryset=Customer.individuals.all()
+    )),
 ]

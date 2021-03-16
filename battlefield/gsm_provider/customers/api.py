@@ -11,6 +11,14 @@ class CustomerList(generics.ListCreateAPIView):
         elif self.request.method == 'POST':
             return DetailCustomerSerializer
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.annotate(calls_made_num=Count('calls_made'),
+                           calls_received_num=Count('calls_received'),
+                           smses_sent_num=Count('smses_sent'),
+                           smses_received_num=Count('smses_received'),
+                           ).all()
+
 
 class CustomerDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = DetailCustomerSerializer
